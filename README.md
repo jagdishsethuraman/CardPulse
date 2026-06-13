@@ -93,3 +93,10 @@ adb install app/build/outputs/apk/debug/app-debug.apk
 
 ## Security & Privacy
 CardPulse implements a Zero-Trust privacy model. For detailed information on security principles, local file handling, and sandboxing, read [SECURITY.md](SECURITY.md).
+
+---
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
