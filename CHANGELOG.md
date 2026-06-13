@@ -22,3 +22,5 @@ All notable changes to the **CardPulse** project will be documented in this file
 - **Spending Trends (Analytics)**: Vertical bar charts showing 3-month and 6-month transaction trends with monthly average values.
 - **Backup & Restore**: Secure export and restore of database data via JSON strings using local clipboard.
 - **Privacy Enforcement**: Verified manifest excluding `android.permission.INTERNET` to guarantee offline data sandboxing.
+- **Open Source License**: Integrated GNU General Public License v3.0 (GPL-3.0-only) to open-source the project.
+
