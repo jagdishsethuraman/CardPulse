@@ -1,0 +1,9 @@
+package com.example.cardpulse
+
+import androidx.navigation3.runtime.NavKey
+import kotlinx.serialization.Serializable
+
+@Serializable data object Onboarding : NavKey
+@Serializable data object Main : NavKey
+@Serializable data object Import : NavKey
+@Serializable data object ImportPreview : NavKey
