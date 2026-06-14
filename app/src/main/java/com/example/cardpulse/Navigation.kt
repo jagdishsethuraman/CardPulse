@@ -1,6 +1,7 @@
 package com.example.cardpulse
 
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -106,7 +107,7 @@ fun MainNavigation() {
             
             entry<Import> {
                 // Scope ImportViewModel to the Activity so it can be shared with ImportPreview
-                val activity = LocalContext.current as ComponentActivity
+                val activity = LocalActivity.current as ComponentActivity
                 val importViewModel: ImportViewModel = viewModel(
                     viewModelStoreOwner = activity,
                     factory = ImportViewModelFactory(app.repository, context)
@@ -119,7 +120,7 @@ fun MainNavigation() {
             }
             
             entry<ImportPreview> {
-                val activity = LocalContext.current as ComponentActivity
+                val activity = LocalActivity.current as ComponentActivity
                 val importViewModel: ImportViewModel = viewModel(
                     viewModelStoreOwner = activity,
                     factory = ImportViewModelFactory(app.repository, context)
