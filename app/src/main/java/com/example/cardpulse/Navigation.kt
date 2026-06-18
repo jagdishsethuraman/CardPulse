@@ -12,6 +12,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -157,6 +158,13 @@ fun MainScreen(
 
     Scaffold(
         bottomBar = {
+            val navItemColors = NavigationBarItemDefaults.colors(
+                selectedIconColor = MaterialTheme.colorScheme.primary,
+                selectedTextColor = MaterialTheme.colorScheme.primary,
+                indicatorColor = MaterialTheme.colorScheme.primaryContainer,
+                unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+            )
             NavigationBar(
                 containerColor = MaterialTheme.colorScheme.surface,
                 tonalElevation = 8.dp
@@ -165,31 +173,36 @@ fun MainScreen(
                     selected = currentTab == MainTab.DASHBOARD,
                     onClick = { currentTab = MainTab.DASHBOARD },
                     icon = { Icon(imageVector = Icons.Rounded.Assessment, contentDescription = "Dashboard") },
-                    label = { Text("Dashboard") }
+                    label = { Text("Dashboard") },
+                    colors = navItemColors
                 )
                 NavigationBarItem(
                     selected = currentTab == MainTab.TRANSACTIONS,
                     onClick = { currentTab = MainTab.TRANSACTIONS },
                     icon = { Icon(imageVector = Icons.Rounded.ReceiptLong, contentDescription = "Activity") },
-                    label = { Text("Activity") }
+                    label = { Text("Activity") },
+                    colors = navItemColors
                 )
                 NavigationBarItem(
                     selected = currentTab == MainTab.ANALYTICS,
                     onClick = { currentTab = MainTab.ANALYTICS },
                     icon = { Icon(imageVector = Icons.Rounded.TrendingUp, contentDescription = "Trends") },
-                    label = { Text("Trends") }
+                    label = { Text("Trends") },
+                    colors = navItemColors
                 )
                 NavigationBarItem(
                     selected = currentTab == MainTab.CARDS,
                     onClick = { currentTab = MainTab.CARDS },
                     icon = { Icon(imageVector = Icons.Rounded.CreditCard, contentDescription = "Cards") },
-                    label = { Text("Cards") }
+                    label = { Text("Cards") },
+                    colors = navItemColors
                 )
                 NavigationBarItem(
                     selected = currentTab == MainTab.SETTINGS,
                     onClick = { currentTab = MainTab.SETTINGS },
                     icon = { Icon(imageVector = Icons.Rounded.Settings, contentDescription = "Settings") },
-                    label = { Text("Settings") }
+                    label = { Text("Settings") },
+                    colors = navItemColors
                 )
             }
         },

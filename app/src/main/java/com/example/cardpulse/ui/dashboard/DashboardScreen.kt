@@ -37,6 +37,9 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
+import androidx.compose.material.icons.rounded.BarChart
 import java.util.Date
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -150,16 +153,23 @@ fun DashboardScreen(
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(12.dp))
+                            .border(
+                                border = BorderStroke(
+                                    width = 1.dp,
+                                    color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outlineVariant
+                                ),
+                                shape = RoundedCornerShape(12.dp)
+                            )
                             .background(
-                                if (isSelected) MaterialTheme.colorScheme.primary
-                                else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                                if (isSelected) MaterialTheme.colorScheme.primaryContainer
+                                else MaterialTheme.colorScheme.surface
                             )
                             .clickable { viewModel.selectCard(null) }
                             .padding(horizontal = 16.dp, vertical = 8.dp)
                     ) {
                         Text(
                             text = "All Cards",
-                            color = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface,
+                            color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
                             fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
                             style = MaterialTheme.typography.bodyMedium
                         )
@@ -169,19 +179,33 @@ fun DashboardScreen(
                 // Individual Cards Chips
                 items(creditCards) { card ->
                     val isSelected = selectedCardId == card.id
+                    val cardColor = remember(card.colorHex) {
+                        try {
+                            Color(android.graphics.Color.parseColor(card.colorHex))
+                        } catch (e: Exception) {
+                            Color.Gray
+                        }
+                    }
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(12.dp))
+                            .border(
+                                border = BorderStroke(
+                                    width = 1.dp,
+                                    color = if (isSelected) cardColor else MaterialTheme.colorScheme.outlineVariant
+                                ),
+                                shape = RoundedCornerShape(12.dp)
+                            )
                             .background(
-                                if (isSelected) Color(android.graphics.Color.parseColor(card.colorHex))
-                                else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                                if (isSelected) cardColor.copy(alpha = 0.15f)
+                                else MaterialTheme.colorScheme.surface
                             )
                             .clickable { viewModel.selectCard(card.id) }
                             .padding(horizontal = 16.dp, vertical = 8.dp)
                     ) {
                         Text(
                             text = "${card.bankName} • ${card.cardName} (${card.lastFourDigits})",
-                            color = if (isSelected) Color.White else MaterialTheme.colorScheme.onSurface,
+                            color = if (isSelected) cardColor else MaterialTheme.colorScheme.onSurfaceVariant,
                             fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
                             style = MaterialTheme.typography.bodyMedium
                         )
@@ -218,7 +242,8 @@ fun DashboardScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 24.dp),
                     shape = RoundedCornerShape(24.dp),
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f))
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
                 ) {
                     Column(
                         modifier = Modifier.padding(20.dp),
@@ -453,8 +478,21 @@ fun DashboardScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        Text(text = "📊", fontSize = 48.sp)
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Box(
+                            modifier = Modifier
+                                .size(72.dp)
+                                .clip(CircleShape)
+                                .background(MaterialTheme.colorScheme.primaryContainer),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                imageVector = Icons.Rounded.BarChart,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(36.dp)
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(20.dp))
                         Text(
                             text = "No Spending Data Available",
                             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
