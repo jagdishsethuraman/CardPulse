@@ -26,6 +26,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Assessment
+import androidx.compose.material.icons.rounded.CreditCard
+import androidx.compose.material.icons.rounded.ReceiptLong
+import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material.icons.rounded.TrendingUp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
@@ -158,31 +164,31 @@ fun MainScreen(
                 NavigationBarItem(
                     selected = currentTab == MainTab.DASHBOARD,
                     onClick = { currentTab = MainTab.DASHBOARD },
-                    icon = { Text("📊", fontSize = 20.sp) },
+                    icon = { Icon(imageVector = Icons.Rounded.Assessment, contentDescription = "Dashboard") },
                     label = { Text("Dashboard") }
                 )
                 NavigationBarItem(
                     selected = currentTab == MainTab.TRANSACTIONS,
                     onClick = { currentTab = MainTab.TRANSACTIONS },
-                    icon = { Text("📄", fontSize = 20.sp) },
+                    icon = { Icon(imageVector = Icons.Rounded.ReceiptLong, contentDescription = "Activity") },
                     label = { Text("Activity") }
                 )
                 NavigationBarItem(
                     selected = currentTab == MainTab.ANALYTICS,
                     onClick = { currentTab = MainTab.ANALYTICS },
-                    icon = { Text("📈", fontSize = 20.sp) },
+                    icon = { Icon(imageVector = Icons.Rounded.TrendingUp, contentDescription = "Trends") },
                     label = { Text("Trends") }
                 )
                 NavigationBarItem(
                     selected = currentTab == MainTab.CARDS,
                     onClick = { currentTab = MainTab.CARDS },
-                    icon = { Text("💳", fontSize = 20.sp) },
+                    icon = { Icon(imageVector = Icons.Rounded.CreditCard, contentDescription = "Cards") },
                     label = { Text("Cards") }
                 )
                 NavigationBarItem(
                     selected = currentTab == MainTab.SETTINGS,
                     onClick = { currentTab = MainTab.SETTINGS },
-                    icon = { Text("⚙️", fontSize = 20.sp) },
+                    icon = { Icon(imageVector = Icons.Rounded.Settings, contentDescription = "Settings") },
                     label = { Text("Settings") }
                 )
             }

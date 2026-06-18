@@ -31,6 +31,10 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.rounded.Assessment
+import androidx.compose.material.icons.rounded.CreditCard
+import androidx.compose.material.icons.rounded.Description
+import androidx.compose.material.icons.rounded.Security
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -194,7 +198,12 @@ fun WelcomePage(onNext: () -> Unit) {
                     ),
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = "💳", fontSize = 72.sp)
+                Icon(
+                    imageVector = Icons.Rounded.CreditCard,
+                    contentDescription = null,
+                    modifier = Modifier.size(80.dp),
+                    tint = MaterialTheme.colorScheme.onPrimary
+                )
             }
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -226,9 +235,21 @@ fun WelcomePage(onNext: () -> Unit) {
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
             ) {
-                ValuePropRow(emoji = "📄", title = "PDF Statement Parsing", desc = "Upload statements from SBI, HDFC, and Federal Bank.")
-                ValuePropRow(emoji = "📊", title = "Unified Spending Trends", desc = "See combined metrics, cycles, and merchant analysis.")
-                ValuePropRow(emoji = "🔒", title = "100% Local & Private", desc = "Zero trackers, zero servers. Your financial data is yours.")
+                ValuePropRow(
+                    icon = Icons.Rounded.Description,
+                    title = "PDF Statement Parsing",
+                    desc = "Upload statements from SBI, HDFC, and Federal Bank."
+                )
+                ValuePropRow(
+                    icon = Icons.Rounded.Assessment,
+                    title = "Unified Spending Trends",
+                    desc = "See combined metrics, cycles, and merchant analysis."
+                )
+                ValuePropRow(
+                    icon = Icons.Rounded.Security,
+                    title = "100% Local & Private",
+                    desc = "Zero trackers, zero servers. Your financial data is yours."
+                )
             }
         }
 
@@ -248,12 +269,25 @@ fun WelcomePage(onNext: () -> Unit) {
 }
 
 @Composable
-fun ValuePropRow(emoji: String, title: String, desc: String) {
+fun ValuePropRow(icon: androidx.compose.ui.graphics.vector.ImageVector, title: String, desc: String) {
     Row(
         verticalAlignment = Alignment.Top,
         modifier = Modifier.fillMaxWidth()
     ) {
-        Text(text = emoji, fontSize = 24.sp, modifier = Modifier.padding(top = 2.dp))
+        Box(
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.primaryContainer),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                modifier = Modifier.size(22.dp)
+            )
+        }
         Spacer(modifier = Modifier.width(16.dp))
         Column {
             Text(

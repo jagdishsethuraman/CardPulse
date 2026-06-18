@@ -26,6 +26,8 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.UploadFile
+import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material.icons.filled.Error
 import com.example.cardpulse.data.db.CreditCard
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -221,7 +223,12 @@ fun ImportScreen(
                             }
                         } else {
                             // No cards warning
-                            Text(text = "⚠️", fontSize = 48.sp)
+                            Icon(
+                                imageVector = Icons.Default.Warning,
+                                contentDescription = null,
+                                modifier = Modifier.size(48.dp),
+                                tint = MaterialTheme.colorScheme.error
+                            )
                             Spacer(modifier = Modifier.height(16.dp))
                             Text(
                                 text = "Add a Credit Card First",
@@ -326,7 +333,12 @@ fun ImportScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        Text(text = "❌", fontSize = 48.sp)
+                        Icon(
+                            imageVector = Icons.Default.Error,
+                            contentDescription = null,
+                            modifier = Modifier.size(48.dp),
+                            tint = MaterialTheme.colorScheme.error
+                        )
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
                             text = "Import Failed",

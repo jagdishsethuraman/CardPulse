@@ -200,7 +200,12 @@ fun TransactionsScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        Text(text = "🔍", fontSize = 48.sp)
+                        Icon(
+                            imageVector = androidx.compose.material.icons.Icons.Default.Search,
+                            contentDescription = null,
+                            modifier = Modifier.size(48.dp),
+                            tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
+                        )
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
                             text = "No Transactions Found",
