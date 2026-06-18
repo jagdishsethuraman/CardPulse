@@ -23,4 +23,6 @@ All notable changes to the **CardPulse** project will be documented in this file
 - **Backup & Restore**: Secure export and restore of database data via JSON strings using local clipboard.
 - **Privacy Enforcement**: Verified manifest excluding `android.permission.INTERNET` to guarantee offline data sandboxing.
 - **Open Source License**: Integrated GNU General Public License v3.0 (GPL-3.0-only) to open-source the project.
+- **Material 3 Icons Upgrade**: Replaced navigation, onboarding welcome page, and screen empty/error state emojis with professional, native Material Design 3 vector icons for a premium UI feel.
+
 
